@@ -121,14 +121,14 @@ For those algorithms, the final network is based on the network described in the
 
 | Algorithm             | Dataset            | Mode                     | Config file                      | Expected result|
 |-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|
-| NAC/EnvelopeNets      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days|
+| NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days|
 | NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.3%    |
 | NAC/EnvelopeNets      | Imagenet           | Construction             | .configs/config.nac.construction.json    | 0.34 days |
 | NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.final.json           | 13.3%  |
-| ENAS (Macrosearch)    | CIFAR10            | Final network            |  configs/config.enas-micro.json (?)   | 3.5% (?) |
+| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas-micro.json (?)   | 3.5% (?) |
 | ENAS                  | CIFAR10            | Final network            |  configs/config.enas.json (?)   | 3.5% (?) |
-| AmoebaNet-B           | CIFAR10            | Final network            |  configs/config.amoebanet.a.json(?)| 2.8% (?)  |
-| DARTs                 | CIFAR10            | Final network            |  configs/config.darts.json      (?)| 2.1% (?)  |
+| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.a.json(?)| 2.8% (?)  |
+| DARTs<sup>3</sup>                | CIFAR10            | Final network            |  configs/config.darts.json      (?)| 2.1% (?)  |
 
 To run an algorithm/network, run the command: 
 ```
@@ -139,6 +139,21 @@ The expected result should be interpreted based on the mode (construction or fin
 In construction mode the expected result is the time to generate the network on a NVidia V100 GPU.
 In final network mode the expected result is the error rate after running for 300 epochs (?).
 Tuning of some networks is in progress, so results may not yet match paper results.
+
+## References
+
+[1] "Efficient Neural Architecture Search via Parameter Sharing",
+Hieu Pham, Melody Y. Guan, Barret Zoph, Quoc V. Le, Jeff Dean, https://arxiv.org/abs/1802.03268
+
+[2] "Regularized Evolution for Image Classifier Architecture Search",
+Esteban Real, Alok Aggarwal, Yanping Huang, Quoc V Le, https://arxiv.org/abs/1802.01548
+
+[3] "DARTS: Differentiable Architecture Search",
+Hanxiao Liu, Karen Simonyan, Yiming Yang, https://arxiv.org/abs/1806.09055
+
+[4] "Neural Architecture Construction using EnvelopeNets",
+Purushotham Kamath, Abhishek Singh, Debo Dutta, https://arxiv.org/abs/1803.06744
+
 
 ## Questions?
 
