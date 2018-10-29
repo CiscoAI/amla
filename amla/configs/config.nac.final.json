@@ -1,0 +1,303 @@
+{
+    "arch": {
+        "network": [
+            {
+                "filters": {
+                    "Branch3": "3x3sep",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch4": "5x5",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    1
+                ],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch2": "3x3",
+                    "Branch4": "5x5"
+                },
+                "inputs": [
+                    1
+                ],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1"
+                },
+                "inputs": [
+                    1
+                ],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep"
+                },
+                "inputs": [
+                    2,
+                    4
+                ],
+                "outputs": 128
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch2": "3x3",
+                    "Branch3": "3x3sep",
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ],
+                "outputs": 128
+            },
+            {
+                "widener": {}
+            },
+            {
+                "filters": {
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    1,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    1,
+                    8,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch2": "3x3"
+                },
+                "inputs": [
+                    9,
+                    6,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch2": "3x3",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    9,
+                    1,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    1,
+                    6,
+                    10,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1"
+                },
+                "inputs": [
+                    9,
+                    1,
+                    3,
+                    8,
+                    10,
+                    12,
+                    7
+                ],
+                "outputs": 256
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch2": "3x3",
+                    "Branch3": "3x3sep",
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    13,
+                    12,
+                    11,
+                    10,
+                    9,
+                    8,
+                    7,
+                    6,
+                    5,
+                    4,
+                    3,
+                    2,
+                    1
+                ],
+                "outputs": 256
+            },
+            {
+                "widener": {}
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch2": "3x3",
+                    "Branch3": "3x3sep",
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    9,
+                    1,
+                    6,
+                    7,
+                    15
+                ],
+                "outputs": 512
+            },
+            {
+                "filters": {
+                    "Branch1": "1x1",
+                    "Branch2": "3x3",
+                    "Branch3": "3x3sep",
+                    "Branch4": "5x5",
+                    "Branch5": "5x5sep",
+                    "Branch6": "7x7sep"
+                },
+                "inputs": [
+                    12,
+                    16,
+                    14,
+                    7,
+                    15
+                ],
+                "outputs": 512
+            }
+        ],
+        "type": "macro"
+    },
+    "child_training": {
+        "gradient_clipping": {
+            "type": "norm",
+            "value": 5.0
+        },
+        "lr": {"type": "cosine_decay", "max": 0.05, "min": 0.001, "T_mul": 2, "T_0": 20},
+        "optimizer": {
+            "momentum": 0.9,
+            "type": "momentum"
+        },
+        "regularization": {
+            "type": "l2",
+            "value": 0.0003
+        }
+    },
+    "classification_cell": {
+        "Layer0": {
+            "Branch0": {
+                "block": "reduce_mean",
+                "size": [
+                    1,
+                    2
+                ]
+            }
+        },
+        "Layer1": {
+            "Branch0": {
+                "block": "flatten",
+                "size": [
+                    3,
+                    3
+                ]
+            }
+        },
+        "Layer2": {
+            "Branch0": {
+                "block": "dropout",
+                "keep_prob": 0.8
+            }
+        },
+        "Layer3": {
+            "Branch0": {
+                "block": "fc-final",
+                "inputs": 192,
+                "outputs": 10
+            }
+        }
+    },
+    "init_cell": {
+        "Layer0": {"Branch0": {"block": "cutout", "size": 16}},
+        "Layer1": {
+            "Branch0": {
+                "block": "conv2d",
+                "kernel_size": [
+                    3,
+                    3
+                ],
+                "outputs": 128
+            }
+        }
+    },
+    "parameters": {
+        "algorithm": "deterministic",
+        "arch_name": "nac-topline",
+        "batch_size": 64,
+        "data_dir": "/data/",
+        "dataset": "cifar10",
+        "eval_interval": 5000,
+        "exec": "localhost",
+        "gpu_usage": 0.47,
+        "gpus": [0,1],
+        "image_size": 40,
+        "iterations": 5,
+        "log_stats": false,
+        "mode": "train",
+        "steps": 300000
+    }
+}

@@ -122,17 +122,17 @@ For those algorithms, the final network is based on the network described in the
 | Algorithm             | Dataset            | Mode                     | Config file                      | Expected result|
 |-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|
 | NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days|
-| NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.3%    |
-| NAC/EnvelopeNets      | Imagenet           | Construction             | .configs/config.nac.construction.json    | 0.34 days |
-| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.final.json           | 13.3%  |
-| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas-micro.json (?)   | 3.5% (?) |
-| ENAS                  | CIFAR10            | Final network            |  configs/config.enas.json (?)   | 3.5% (?) |
-| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.a.json(?)| 2.8% (?)  |
-| DARTs<sup>3</sup>                | CIFAR10            | Final network            |  configs/config.darts.json      (?)| 2.1% (?)  |
+| NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.33%    |
+| NAC/EnvelopeNets      | Imagenet           | Construction             | configs/config.nac.construction.json    | 0.25 days |
+| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.final.json           | 12.16%  |
+| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas.json   | 4.3%  |
+| ENAS                  | CIFAR10            | Final network            |  configs/config.enas-micro.json   | In Progress |
+| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.b.json| 5.32%  |
+| DARTS<sup>3</sup>                | CIFAR10            | Final network            |  configs/config.darts.json      | 4.22%  |
 
 To run an algorithm/network, run the command: 
 ```
-amla add_task <config file> 
+add_task <config file>
 ```
 where the config file is specified in the table above. 
 The expected result should be interpreted based on the mode (construction or final network).
@@ -180,4 +180,3 @@ If you use AMLA for your research, please cite this [paper](./docs/design/amla.p
   URL = {}
 }
 ```
-
