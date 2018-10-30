@@ -1,6 +1,6 @@
 {
 "parameters": {
-        "arch_name":"nac-cons-skip-conns",
+        "arch_name":"nac-cons-skip-cons-topline",
         "exec":"localhost",
         "mode":"construct",
         "algorithm": "envelopenet",
@@ -21,11 +21,11 @@
     "gradient_clipping": {"type": "norm", "value":5.0},
     "regularization": {"type": "l2", "value": 3e-4}
 },
-"envelopenet":{ "stages": 4,
-        "layers_per_stage": [10,1,1,1],
-        "max_layers_per_stage": [15,5,3,3],
-        "construction": [true, true, true, true],
-        "parameter_limits": [false, false, false, false],
+"envelopenet":{ "stages": 3,
+        "layers_per_stage": [2,2,2],
+        "max_layers_per_stage": [7,6,2],
+        "construction": [true, true, false],
+        "parameter_limits": [false, false, false],
         "max_filter_prune":6,
         "envelopecell": {
             "Branch1": "1x1",
@@ -39,7 +39,7 @@
         "worst_case": false
 },
 "init_cell": {
-    "Layer0": {"Branch0": {"block": "conv2d", "kernel_size": [1, 1], "outputs": 128}},
+    "Layer0": {"Branch0": {"block": "conv2d", "kernel_size": [1, 1], "outputs": 64}},
     "Layer2": {"Branch0": {"block": "lrn" }}
 },
 "classification_cell": {

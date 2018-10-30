@@ -123,8 +123,7 @@ For those algorithms, the final network is based on the network described in the
 |-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|
 | NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days|
 | NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.33%    |
-| NAC/EnvelopeNets      | Imagenet           | Construction             | configs/config.nac.construction.json    | 0.25 days |
-| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.final.json           | 12.16%  |
+| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.imgnet.json           | 12.00%  |
 | ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas.json   | 4.3%  |
 | ENAS                  | CIFAR10            | Final network            |  configs/config.enas-micro.json   | In Progress |
 | AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.b.json| 5.32%  |
@@ -136,8 +135,7 @@ add_task <config file>
 ```
 where the config file is specified in the table above. 
 The expected result should be interpreted based on the mode (construction or final network).
-In construction mode the expected result is the time to generate the network on a NVidia V100 GPU.
-In final network mode the expected result is the error rate after running for 300 epochs (?).
+In construction mode the expected result is the time to generate the network on a NVidia V100 GPU. Our Imagenet network is obtained from CIFAR10 construction by replacing the hyperparameters of CIFAR10 to the ones commonly used for Imagenet.
 Tuning of some networks is in progress, so results may not yet match paper results.
 
 ## References
