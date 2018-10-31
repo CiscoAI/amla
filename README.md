@@ -120,13 +120,13 @@ configuration file, based on the network described in their papers/open source c
 
 | Algorithm             | Dataset            | Mode                     | Config file                      | AMLA result| Paper result    |
 |-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|-------------------|
-| NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  [configs/config.nac.construction.json](configs/config.nac.construction.json)    | 0.25 days| 0.25 days|
-| NAC/EnvelopeNets      | CIFAR10            | Final network            |  [configs/config.nac.final.json](configs/config.nac.final.json)           | 3.33%    | 3.33% |
-| NAC/EnvelopeNets      | Imagenet           | Final network            |  [configs/config.nac.imgnet.json](configs/config.nac.imgnet.json)           | 11.77%  | 15.36% |
-| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  [configs/config.enas.json](configs/config.enas.json)   | 4.3%  | 4.23% |
-| ENAS                  | CIFAR10            | Final network            |  [configs/config.enas-micro.json](configs/config.enas-micro.json)   | In Progress | 2.89%  |
-| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  [configs/config.amoebanet.b.json](configs/config.amoebanet.b.json)| 5.32%  | 2.13% |
-| DARTS<sup>3</sup>                | CIFAR10            | Final network            |  [configs/config.darts.json](configs/config.darts.json)      | 4.22%  | 2.94% |
+| NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  [configs/config.nac.construction.json](amla/configs/config.nac.construction.json)    | 0.25 days| 0.25 days|
+| NAC/EnvelopeNets      | CIFAR10            | Final network            |  [configs/config.nac.final.json](amla/configs/config.nac.final.json)           | 3.33%    | 3.33% |
+| NAC/EnvelopeNets      | Imagenet           | Final network            |  [configs/config.nac.imgnet.json](amla/configs/config.nac.imgnet.json)           | 11.77%  | 15.36% |
+| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  [configs/config.enas.json](amla/configs/config.enas.json)   | 4.3%  | 4.23% |
+| ENAS                  | CIFAR10            | Final network            |  [configs/config.enas-micro.json](amla/configs/config.enas-micro.json)   | In Progress | 2.89%  |
+| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  [configs/config.amoebanet.b.json](amla/configs/config.amoebanet.b.json)| 5.32%  | 2.13% |
+| DARTS<sup>3</sup>                | CIFAR10            | Final network            |  [configs/config.darts.json](amla/configs/config.darts.json)      | 4.22%  | 2.94% |
 
 The results columns should be interpreted based on the mode (construction or final network).
 In construction mode the result is the time to generate the network on a NVidia V100 GPU. 
