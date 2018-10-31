@@ -119,15 +119,15 @@ instructions.
 For those algorithms, the final network is based on the network described in their papers/open source code.
 
 
-| Algorithm             | Dataset            | Mode                     | Config file                      | Expected result|
-|-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|
-| NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days|
-| NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.33%    |
-| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.imgnet.json           | 12.00%  |
-| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas.json   | 4.3%  |
-| ENAS                  | CIFAR10            | Final network            |  configs/config.enas-micro.json   | In Progress |
-| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.b.json| 5.32%  |
-| DARTS<sup>3</sup>                | CIFAR10            | Final network            |  configs/config.darts.json      | 4.22%  |
+| Algorithm             | Dataset            | Mode                     | Config file                      | Expected result| Original result    |
+|-----------------------|--------------------|--------------------------|-------------------------------------------------------|----------------|-------------------|
+| NAC/EnvelopeNets<sup>4</sup>      | CIFAR10            | Construction             |  configs/config.nac.construction.json    | 0.25 days| 0.25 days|
+| NAC/EnvelopeNets      | CIFAR10            | Final network            |  configs/config.nac.final.json           | 3.33%    | 3.33% |
+| NAC/EnvelopeNets      | Imagenet           | Final network            |  configs/config.nac.imgnet.json           | 11.77%  | 15.36% |
+| ENAS (Macrosearch)<sup>1</sup>   | CIFAR10            | Final network            |  configs/config.enas.json   | 4.3%  | 4.23% |
+| ENAS                  | CIFAR10            | Final network            |  configs/config.enas-micro.json   | In Progress | 2.89  |
+| AmoebaNet-B<sup>2</sup>           | CIFAR10            | Final network            |  configs/config.amoebanet.b.json| 5.32%  | 2.13% |
+| DARTS<sup>3</sup>                | CIFAR10            | Final network            |  configs/config.darts.json      | 4.22%  | 2.94% |
 
 To run an algorithm/network, run the command: 
 ```
