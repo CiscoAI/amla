@@ -3,7 +3,7 @@
         "arch_name":"amoebanet-b",
         "mode":"train",
         "algorithm": "deterministic",
-        "gpus":"[]",
+        "gpus":[],
         "steps" : 235000,
         "eval_interval" : 5000,
         "batch_size" : 128,

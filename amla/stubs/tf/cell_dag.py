@@ -69,6 +69,10 @@ def get_arch_from_dag(inputs, arch, is_training):
                                 net = slim.fully_connected(net, output_units)
                                 net = slim.dropout(net, keep_prob=0.8, is_training=is_training)
                                 subgraph[node] = net
+                            elif target_node["type"] == "identity":
+                                input_node = subgraph[inputs[0]]
+                                net = tf.identity(input_node)
+                                subgraph[node] = net
                             # Convolution and pooling
                             else:
                                 # get parameters

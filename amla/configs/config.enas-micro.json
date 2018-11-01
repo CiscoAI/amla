@@ -3,7 +3,7 @@
         "arch_name":"enas-micro",
         "mode":"train",
         "algorithm": "deterministic",
-        "gpus":"[]",
+        "gpus":[],
         "steps" : 300000,
         "eval_interval" : 5000,
         "batch_size" : 64,
@@ -11,8 +11,8 @@
         "data_dir":"/data/",
         "train_dir":"/train/",
         "iterations" : 5,
-        "image_size" : 26,
-        "log_stats": true
+        "image_size" : 40,
+        "log_stats": false
 },
 "init_cell": {
     "Layer0": {"Branch0": {"block": "conv2d", "kernel_size": [3, 3], "outputs": 192}},
@@ -24,56 +24,62 @@
     "Layer2": {"Branch0": {"block": "dropout", "keep_prob": 0.7}},
     "Layer3": {"Branch0": {"block": "fc-final", "inputs": 192, "outputs": 10}}
 },
-"arch": {"type": "macro",
+"child_training": {
+	    "optimizer": {"type": "momentum", "momentum": 0.9},
+			    "lr": {"type": "cosine_decay", "max": 0.024, "min": 0.00001, "T_mul": 1, "T_0": 610},
+					    "gradient_clipping": {"type": "norm", "value":5.0},
+							    "regularization": {"type": "l2", "value": 5e-4}
+},
+"arch": {"type": "micro",
     "normal_cell":{
          "node1": -1,
          "node2": 0,
 
-         "node3": {"node":"3x3sep", "input":["node2"]},
-         "node4": {"node":"identity", "input":["node2"]},
-         "node5": {"node":"5x5sep", "input":["node2"]},
-         "node6": {"node":"identity", "input":["node1"]},
-         "node7": {"node":"3x3avg", "input":["node1"]},
-         "node8": {"node":"3x3sep", "input":["node2"]},
-         "node9": {"node":"3x3sep", "input":["node1"]},
-         "node10": {"node":"3x3avg", "input":["node2"]},
-         "node11": {"node":"5x5sep", "input":["node2"]},
-         "node12": {"node":"3x3avg", "input":["node1"]},
+         "node3": {"node":{"type":"3x3sep"}, "input":["node2"]},
+         "node4": {"node":{"type":"identity"}, "input":["node2"]},
+         "node5": {"node":{"type":"5x5sep"}, "input":["node2"]},
+         "node6": {"node":{"type":"identity"}, "input":["node1"]},
+         "node7": {"node":{"type":"3x3avg"}, "input":["node1"]},
+         "node8": {"node":{"type":"3x3sep"}, "input":["node2"]},
+         "node9": {"node":{"type":"3x3sep"}, "input":["node1"]},
+         "node10": {"node":{"type":"3x3avg"}, "input":["node2"]},
+         "node11": {"node":{"type":"5x5sep"}, "input":["node2"]},
+         "node12": {"node":{"type":"3x3avg"}, "input":["node1"]},
 
-         "node13": {"node":"add", "input":["node3", "node4"]},
-         "node14": {"node":"add", "input":["node5", "node6"]},
-         "node15": {"node":"add", "input":["node7", "node8"]},
-         "node16": {"node":"add", "input":["node9", "node10"]},
-         "node17": {"node":"add", "input":["node11", "node12"]},
+         "node13": {"node":{"type":"add"}, "input":["node3", "node4"]},
+         "node14": {"node":{"type":"add"}, "input":["node5", "node6"]},
+         "node15": {"node":{"type":"add"}, "input":["node7", "node8"]},
+         "node16": {"node":{"type":"add"}, "input":["node9", "node10"]},
+         "node17": {"node":{"type":"add"}, "input":["node11", "node12"]},
 
-         "node18": {"node":"concat", "input":["node13", "node14", "node15", "node16", "node17"]}
+         "node18": {"node":{"type":"concat"}, "input":["node13", "node14", "node15", "node16", "node17"]}
     },
     "reduction_cell":{
          "node1": -1,
          "node2": 0,
 
-         "node3": {"node":"5x5sep", "input":["node1"]},
-         "node4": {"node":"3x3avg", "input":["node2"]},
-         "node5": {"node":"3x3sep", "input":["node2"]},
-         "node6": {"node":"3x3avg", "input":["node2"]},
-         "node7": {"node":"3x3avg", "input":["node2"]},
-         "node8": {"node":"3x3sep", "input":["node2"]},
+         "node3": {"node":{"type":"5x5sep"}, "input":["node1"]},
+         "node4": {"node":{"type":"3x3avg"}, "input":["node2"]},
+         "node5": {"node":{"type":"3x3sep"}, "input":["node2"]},
+         "node6": {"node":{"type":"3x3avg"}, "input":["node2"]},
+         "node7": {"node":{"type":"3x3avg"}, "input":["node2"]},
+         "node8": {"node":{"type":"3x3sep"}, "input":["node2"]},
 
-         "node9": {"node":"add", "input":["node3", "node4"]},
-         "node10": {"node":"add", "input":["node5", "node6"]},
-         "node11": {"node":"add", "input":["node7", "node8"]},
+         "node9": {"node":{"type":"add"}, "input":["node3", "node4"]},
+         "node10": {"node":{"type":"add"}, "input":["node5", "node6"]},
+         "node11": {"node":{"type":"add"}, "input":["node7", "node8"]},
 
-         "node12": {"node":"5x5sep", "input":["node11"]},
-         "node13": {"node":"3x3avg", "input":["node2"]},
+         "node12": {"node":{"type":"5x5sep"}, "input":["node11"]},
+         "node13": {"node":{"type":"3x3avg"}, "input":["node2"]},
 
-         "node14": {"node":"add", "input":["node12", "node13"]},
+         "node14": {"node":{"type":"add"}, "input":["node12", "node13"]},
 
-         "node15": {"node":"3x3sep", "input":["node14"]},
-         "node16": {"node":"5x5sep", "input":["node1"]},
+         "node15": {"node":{"type":"3x3sep"}, "input":["node14"]},
+         "node16": {"node":{"type":"5x5sep"}, "input":["node1"]},
 
-         "node17": {"node":"add", "input":["node15", "node16"]},
+         "node17": {"node":{"type":"add"}, "input":["node15", "node16"]},
 
-         "node18": {"node":"concat", "input":["node9", "node10", "node17"]}
+         "node18": {"node":{"type":"concat"}, "input":["node9", "node10", "node17"]}
 
     },
     "network":[

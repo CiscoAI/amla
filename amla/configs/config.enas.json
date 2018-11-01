@@ -3,7 +3,7 @@
         "arch_name":"enas",
         "mode":"train",
         "algorithm": "deterministic",
-        "gpus":"[]",
+        "gpus":[],
         "steps" : 240000,
         "eval_interval" : 5000,
         "batch_size" : 64,
@@ -12,7 +12,7 @@
         "train_dir":"/train/",
         "iterations" : 5,
         "image_size" : 40,
-        "log_stats": true
+        "log_stats": false
 },
 
 "child_training": {
@@ -32,7 +32,9 @@
     "Layer2": {"Branch0": {"block": "dropout", "keep_prob": 0.7}},
     "Layer3": {"Branch0": {"block": "fc-final", "inputs": 192, "outputs": 10}}
 },
-"arch": [
+"arch":{
+   "type": "macro",	
+   "network":[
     { 
         "filters": { 
             "Branch0": "5x5sep" 
@@ -122,4 +124,5 @@
         "outputs": 448
     }
 ]
+}
 }
